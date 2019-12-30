@@ -1,2 +1,1 @@
-<app-todo-list-item *ngFor="let item of items" [course]="item"></app-todo-list-item>
-
+<app-todo-list-item (onDelete) = "onRootDelete($event)" *ngFor="let item of items" [course]="item"></app-todo-list-item>

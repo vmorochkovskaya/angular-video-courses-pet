@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Course} from '../course';
 
 @Component({
@@ -7,12 +7,19 @@ import {Course} from '../course';
   styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent implements OnInit {
-
   @Input()
   public course: Course;
-  constructor() { }
+
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  delete() {
+    this.onDelete.emit(this.course.id);
+  }
 }

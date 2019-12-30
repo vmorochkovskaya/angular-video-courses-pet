@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-cources-page',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourcesPageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  update(id: number) {
+    console.log(id);
   }
 
 }

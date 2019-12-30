@@ -8,6 +8,7 @@ import {FooterComponent} from './footer/footer.component';
 import {LogoComponent} from './logo/logo.component';
 import {CourcesPageComponent} from './cources-page/cources-page.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     CourcesPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class CoreModule {
