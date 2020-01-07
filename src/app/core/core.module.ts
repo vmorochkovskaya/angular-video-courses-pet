@@ -9,6 +9,7 @@ import {LogoComponent} from './logo/logo.component';
 import {CourcesPageComponent} from './cources-page/cources-page.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import {FormsModule} from '@angular/forms';
+import {LoadMoreComponent} from './load-more/load-more.component';
 
 
 @NgModule({
@@ -19,14 +20,16 @@ import {FormsModule} from '@angular/forms';
     FooterComponent,
     LogoComponent,
     CourcesPageComponent,
-    BreadcrumbsComponent],
+    BreadcrumbsComponent,
+  LoadMoreComponent],
   exports: [
     TodoListComponent,
     FooterComponent,
     HeaderComponent,
     BreadcrumbsComponent,
     SectionComponent,
-    CourcesPageComponent
+    CourcesPageComponent,
+    LoadMoreComponent
   ],
   imports: [
     CommonModule,
