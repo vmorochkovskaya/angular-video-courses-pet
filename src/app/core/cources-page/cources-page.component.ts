@@ -1,10 +1,5 @@
 import {
-  AfterContentChecked,
-  AfterContentInit,
-  AfterViewChecked, AfterViewInit,
   Component,
-  DoCheck,
-  OnChanges,
   OnInit
 } from '@angular/core';
 
