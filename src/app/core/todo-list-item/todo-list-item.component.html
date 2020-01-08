@@ -7,8 +7,9 @@
 
   <p>
   {{course?.duration}} &nbsp;min &nbsp;{{course?.creationDate.toDateString()}}
+  </p>
  &nbsp;
   {{course?.description}}
-    <a class="button">Edit</a>
-    <a class="button" (click)="delete()">Delete</a>
+<!--    <a class="button">Edit</a>-->
+    <a class="button" name="Delete" (click)="delete()">Delete</a>
 </a>

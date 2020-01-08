@@ -9,7 +9,6 @@ import {LogoComponent} from './logo/logo.component';
 import {CourcesPageComponent} from './cources-page/cources-page.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import {FormsModule} from '@angular/forms';
-import {LoadMoreComponent} from './load-more/load-more.component';
 
 
 @NgModule({
@@ -20,8 +19,7 @@ import {LoadMoreComponent} from './load-more/load-more.component';
     FooterComponent,
     LogoComponent,
     CourcesPageComponent,
-    BreadcrumbsComponent,
-  LoadMoreComponent],
+    BreadcrumbsComponent],
   exports: [
     TodoListComponent,
     FooterComponent,
@@ -29,7 +27,6 @@ import {LoadMoreComponent} from './load-more/load-more.component';
     BreadcrumbsComponent,
     SectionComponent,
     CourcesPageComponent,
-    LoadMoreComponent
   ],
   imports: [
     CommonModule,

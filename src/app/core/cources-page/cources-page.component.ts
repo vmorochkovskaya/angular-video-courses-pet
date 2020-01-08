@@ -8,7 +8,7 @@ import {
   templateUrl: './cources-page.component.html',
   styleUrls: ['./cources-page.component.scss']
 })
-export class CourcesPageComponent implements OnInit{
+export class CourcesPageComponent implements OnInit {
 
   constructor() {
     console.log(`courses page constructor`);
@@ -20,6 +20,10 @@ export class CourcesPageComponent implements OnInit{
 
   update(id: number) {
     console.log(id);
+  }
+
+  onClick() {
+    console.log('Load more click');
   }
 
 }
