@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserEntity} from '../user-entity';
 import {User} from '../classes/user';
+import {AuthorizationService} from '../../services/authorization.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,15 @@ import {User} from '../classes/user';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input()
-  public user: UserEntity;
 
-  constructor() {
+  constructor(private authorizationService: AuthorizationService) {
   }
 
   ngOnInit() {
-    this.user = new User('Ivanov', 'Ivan');
+  }
+
+  logout(): void {
+    this.authorizationService.logout();
+    console.log('log out');
   }
 }

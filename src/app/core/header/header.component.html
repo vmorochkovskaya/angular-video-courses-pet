@@ -2,17 +2,17 @@
   <div class="container">
     <div id='nav-menu' class="nav-right nav-menu">
       <app-logo></app-logo>
-      <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div *ngIf="authorizationService.isAuthenticated()" id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-start">
           <p class="navbar-item">
-            {{user.firstName}}&nbsp;{{user.lastName}}
+            {{authorizationService.getUserInfo()}}
           </p>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <a class="button is-primary">
+                <a class="button is-primary" (click)="logout()">
                   <span>Log off</span>
                 </a>
               </p>

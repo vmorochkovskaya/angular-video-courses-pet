@@ -4,9 +4,10 @@ export class User implements UserEntity {
   firstName: string;
   id: number;
   lastName: string;
+  login: string;
+  password: string;
+  token: string;
 
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
+  constructor() {
   }
 }

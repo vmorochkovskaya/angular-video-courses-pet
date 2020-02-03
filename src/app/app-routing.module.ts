@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {CourcesPageComponent} from './core/cources-page/cources-page.component';
+import {CourcesPageComponent} from './core/pages/cources-page/cources-page.component';
 
 const appRoutes: Routes = [
   {path: 'cources-page', component: CourcesPageComponent},

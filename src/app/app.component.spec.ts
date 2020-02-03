@@ -32,6 +32,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('startProject app is running!');
+    expect(compiled.querySelector('.is-hidden-desktop-only').textContent).toContain('startProject app is running!');
   });
 });

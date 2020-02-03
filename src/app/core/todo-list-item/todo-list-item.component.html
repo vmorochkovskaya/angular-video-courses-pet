@@ -1,15 +1,16 @@
-<a class="panel-block is-active">
-    <span class="panel-icon">
+<a class="panel-block" appBorderOnCreationDate [borderOnDate]='course?.creationDate'
+   [ngClass]="{'star': course?.topRated === true}">
+<span class="panel-icon">
       <i class="fas fa-book" aria-hidden="true"></i>
     </span>
   <p>
-  </p>  <strong>{{course?.title}}</strong> &nbsp;
-
-  <p>
-  {{course?.duration}} &nbsp;min &nbsp;{{course?.creationDate.toDateString()}}
   </p>
- &nbsp;
+  <strong>{{course?.title | uppercase}}</strong> &nbsp;
+  <img src="../../../assets/images/star.png" *ngIf="course?.topRated === true" alt="текст" width="30" height="30" >
+<p>
+  {{course?.duration | hourDuration}}&nbsp;{{course?.creationDate | date:'d MMM, y'}}
+  </p>
   {{course?.description}}
 <!--    <a class="button">Edit</a>-->
-    <a class="button" name="Delete" (click)="delete()">Delete</a>
+    <a class="btn btn-lg btn-outline-primary"  name="Delete" (click)="delete()">Delete</a>
 </a>

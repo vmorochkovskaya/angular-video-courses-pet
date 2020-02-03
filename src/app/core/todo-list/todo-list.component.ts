@@ -1,58 +1,43 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterContentChecked, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Course} from '../course';
 import {VideoCourse} from '../classes/video-course';
+import {FilterCourseByNamePipe} from '../../pipes/filter-course-by-name.pipe';
+import {CoursesService} from '../../services/courses.service';
+
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, AfterContentChecked {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onDeleteInList: EventEmitter<number> = new EventEmitter<number>();
+
+  @Input() public titleToFind: string;
+
   public items: Course[];
 
 
-  constructor() {
+  constructor(private coursesService: CoursesService) {
+    this.titleToFind = '';
   }
 
   ngOnInit() {
-    this.items = [
-      {
-        id: 1,
-        creationDate: new Date(),
-        description: 'Some description for course1',
-        duration: 60,
-        title: 'Video Course 1',
-      },
-      {
-        id: 2,
-        creationDate: new Date(),
-        description: 'Some description for course2',
-        duration: 80,
-        title: 'Video Course 2',
-      },
+    this.titleToFind = '';
+    this.items = this.coursesService.getList();
+  }
 
-      {
-        id: 3,
-        creationDate: new Date(),
-        description: 'Some description for course3',
-        duration: 120,
-        title: 'Video Course 3',
-      },
-
-      {
-        id: 4,
-        creationDate: new Date(),
-        description: 'Some description for course4',
-        duration: 60,
-        title: 'Video Course 4',
-      }
-    ];
+  ngAfterContentChecked() {
+    this.items = new FilterCourseByNamePipe().transform(this.items, this.titleToFind);
   }
 
   onRootDelete(id: number) {
-    this.items = this.items.filter((item: VideoCourse) => item.id !== id);
+    this.items = this.coursesService.removeCourse(id);
     this.onDeleteInList.emit(id);
+  }
+
+  onClick() {
+    console.log('Load more click');
   }
 }

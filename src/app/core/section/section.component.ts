@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-section',
@@ -9,6 +9,10 @@ export class SectionComponent implements OnInit {
   @Input()
   public searchText: any;
 
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
+
+
   constructor() {
   }
 
@@ -17,5 +21,6 @@ export class SectionComponent implements OnInit {
 
   onClick() {
     console.log(this.searchText);
+    this.onSearch.emit(this.searchText);
   }
 }

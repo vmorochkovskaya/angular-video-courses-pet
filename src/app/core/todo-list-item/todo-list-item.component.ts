@@ -10,6 +10,8 @@ import {
   Output
 } from '@angular/core';
 import {Course} from '../course';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DeleteModalComponent} from '../delete-modal/delete-modal.component';
 
 // tslint:disable-next-line:no-conflicting-lifecycle
 @Component({
@@ -25,11 +27,12 @@ export class TodoListItemComponent implements OnInit, DoCheck,
   AfterViewInit {
   @Input()
   public course: Course;
+  closeResult: string;
 
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
     console.log(`item constructor`);
   }
 
@@ -62,6 +65,21 @@ export class TodoListItemComponent implements OnInit, DoCheck,
   }
 
   delete() {
-    this.onDelete.emit(this.course.id);
+    this.modalService.open(DeleteModalComponent).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      this.onDelete.emit(this.course.id);
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

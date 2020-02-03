@@ -1,5 +1,5 @@
 import {
-  Component,
+  Component, Input,
   OnInit
 } from '@angular/core';
 
@@ -10,20 +10,25 @@ import {
 })
 export class CourcesPageComponent implements OnInit {
 
+  @Input()
+  public searchCourseTitle: string;
+
   constructor() {
     console.log(`courses page constructor`);
+    this.searchCourseTitle = '';
   }
 
   ngOnInit() {
     console.log(`courses page ngOnInit`);
+    this.searchCourseTitle = '';
   }
 
   update(id: number) {
     console.log(id);
   }
 
-  onClick() {
-    console.log('Load more click');
+  refreshSeearch(text: string) {
+    this.searchCourseTitle = text;
   }
 
 }

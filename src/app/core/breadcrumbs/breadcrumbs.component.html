@@ -1,4 +1,4 @@
-<nav class="breadcrumb" aria-label="breadcrumbs">
+<nav *ngIf="authorizationService.isAuthenticated()" nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li class="is-active"><a href="#" aria-current="page">Courses</a></li>
   </ul>
