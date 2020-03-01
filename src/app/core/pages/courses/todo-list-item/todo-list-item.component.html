@@ -6,11 +6,11 @@
   <p>
   </p>
   <strong>{{course?.title | uppercase}}</strong> &nbsp;
-  <img src="../../../assets/images/star.png" *ngIf="course?.topRated === true" alt="текст" width="30" height="30" >
+  <img src="../../../../../assets/images/star.png" *ngIf="course?.topRated === true" alt="текст" width="30" height="30" >
 <p>
   {{course?.duration | hourDuration}}&nbsp;{{course?.creationDate | date:'d MMM, y'}}
   </p>
   {{course?.description}}
-<!--    <a class="button">Edit</a>-->
+    <a class="button" (click)="navigateToDetails()">Edit</a>
     <a class="btn btn-lg btn-outline-primary"  name="Delete" (click)="delete()">Delete</a>
 </a>

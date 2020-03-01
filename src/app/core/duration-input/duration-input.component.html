@@ -1,0 +1,5 @@
+<div class="field">
+  <label class="label">Duration</label>
+  <div class="control">
+    <input class="input" type="text" [ngModel]="duration" (input)="valueChanges()" (ngModelChange)="duration=$event">{{duration | hourDuration}}
+  </div></div>

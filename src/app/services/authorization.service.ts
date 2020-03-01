@@ -23,7 +23,6 @@ export class AuthorizationService {
   }
 
   public getUserInfo(): string {
-    console.log(JSON.parse(localStorage.getItem(localStorage.key(0))));
     return JSON.parse(localStorage.getItem(localStorage.key(0))).login;
   }
 }

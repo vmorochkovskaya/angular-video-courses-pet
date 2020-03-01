@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthorizationService} from '../../../services/authorization.service';
-import {UserEntity} from "../../user-entity";
-import {User} from "../../classes/user";
+import {UserEntity} from '../../user-entity';
+import {User} from '../../classes/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +16,7 @@ export class LoginPageComponent implements OnInit {
   @Input()
   public password: any;
 
-  constructor(private authenticationService: AuthorizationService) {
+  constructor(private authenticationService: AuthorizationService, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,5 +27,6 @@ export class LoginPageComponent implements OnInit {
     user.login = this.login;
     user.password = this.password;
     this.authenticationService.login(user);
+    this.router.navigate(['/courses-page']);
   }
 }

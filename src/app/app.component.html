@@ -3,10 +3,5 @@
 <div class="content is-hidden-desktop-only">
   <span class="is-hidden-desktop-only is-hidden-widescreen-only">'startProject app is running!'</span>
 </div>
-<p *ngIf="authorizationService.isAuthenticated(); else loggedOut">
-  <app-cources-page></app-cources-page>
-</p>
-<ng-template #loggedOut>
-  <app-login-page></app-login-page>
-</ng-template>
+<router-outlet></router-outlet>
 <app-footer></app-footer>

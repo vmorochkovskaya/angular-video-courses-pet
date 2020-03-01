@@ -1,6 +1,6 @@
 import {
   AfterContentChecked,
-  AfterContentInit, AfterViewChecked, AfterViewInit,
+  AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy,
   Component,
   DoCheck,
   EventEmitter,
@@ -9,15 +9,18 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import {Course} from '../course';
+import {Course} from '../../../course';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {DeleteModalComponent} from '../delete-modal/delete-modal.component';
+import {DeleteModalComponent} from '../../../delete-modal/delete-modal.component';
+import {Router} from '@angular/router';
+import {CoursesService} from '../../../../services/courses.service';
 
 // tslint:disable-next-line:no-conflicting-lifecycle
 @Component({
   selector: 'app-todo-list-item',
   templateUrl: './todo-list-item.component.html',
-  styleUrls: ['./todo-list-item.component.scss']
+  styleUrls: ['./todo-list-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListItemComponent implements OnInit, DoCheck,
   OnChanges,
@@ -32,7 +35,7 @@ export class TodoListItemComponent implements OnInit, DoCheck,
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private router: Router, private coursesService: CoursesService){
     console.log(`item constructor`);
   }
 
@@ -81,5 +84,9 @@ export class TodoListItemComponent implements OnInit, DoCheck,
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  navigateToDetails() {
+    this.router.navigate(['course', this.course.id], {queryParams: {redirectedFromClass: true}});
   }
 }

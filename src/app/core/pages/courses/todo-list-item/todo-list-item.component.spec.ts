@@ -1,10 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TodoListItemComponent} from './todo-list-item.component';
-import {Course} from '../course';
+import {Course} from '../../../course';
 import {By} from '@angular/platform-browser';
-import {HourDurationPipe} from '../../pipes/hour-duration.pipe';
-import {BorderOnCreationDateDirective} from '../../directives/border-on-creation-date.directive';
+import {HourDurationPipe} from '../../../../pipes/hour-duration.pipe';
+import {BorderOnCreationDateDirective} from '../../../../directives/border-on-creation-date.directive';
 
 describe('TodoListItemComponent', () => {
   let component: TodoListItemComponent;

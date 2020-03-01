@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-section',
@@ -12,6 +12,9 @@ export class SectionComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
 
+  // tslint:disable-next-line:no-output-on-prefix
+  // @Output() onAdd: EventEmitter<any> = new EventEmitter<any>();
+
 
   constructor() {
   }
@@ -23,4 +26,8 @@ export class SectionComponent implements OnInit {
     console.log(this.searchText);
     this.onSearch.emit(this.searchText);
   }
+
+  // onAddCourse() {
+  // this.onAdd.emit(true);
+  // }
 }

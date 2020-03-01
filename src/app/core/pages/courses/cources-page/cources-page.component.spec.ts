@@ -1,19 +1,19 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CourcesPageComponent} from './cources-page.component';
-import {TodoListComponent} from '../../todo-list/todo-list.component';
-import {HeaderComponent} from '../../header/header.component';
-import {FooterComponent} from '../../footer/footer.component';
-import {SectionComponent} from '../../section/section.component';
-import {BreadcrumbsComponent} from '../../breadcrumbs/breadcrumbs.component';
-import {TodoListItemComponent} from '../../todo-list-item/todo-list-item.component';
-import {LogoComponent} from '../../logo/logo.component';
+import {TodoListComponent} from '../todo-list/todo-list.component';
+import {HeaderComponent} from '../../../header/header.component';
+import {FooterComponent} from '../../../footer/footer.component';
+import {SectionComponent} from '../section/section.component';
+import {BreadcrumbsComponent} from '../../../breadcrumbs/breadcrumbs.component';
+import {TodoListItemComponent} from '../todo-list-item/todo-list-item.component';
+import {LogoComponent} from '../../../logo/logo.component';
 import {FormsModule} from '@angular/forms';
 
 import {By} from '@angular/platform-browser';
-import {OrderByPipe} from '../../../pipes/order-by.pipe';
-import {HourDurationPipe} from '../../../pipes/hour-duration.pipe';
-import {BorderOnCreationDateDirective} from '../../../directives/border-on-creation-date.directive';
+import {OrderByPipe} from '../../../../pipes/order-by.pipe';
+import {HourDurationPipe} from '../../../../pipes/hour-duration.pipe';
+import {BorderOnCreationDateDirective} from '../../../../directives/border-on-creation-date.directive';
 
 describe('CourcesPageComponent', () => {
   let component: CourcesPageComponent;

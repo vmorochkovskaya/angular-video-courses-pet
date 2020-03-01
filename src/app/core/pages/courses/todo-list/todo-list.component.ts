@@ -1,8 +1,6 @@
 import {AfterContentChecked, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Course} from '../course';
-import {VideoCourse} from '../classes/video-course';
-import {FilterCourseByNamePipe} from '../../pipes/filter-course-by-name.pipe';
-import {CoursesService} from '../../services/courses.service';
+import {Course} from '../../../course';
+import {FilterCourseByNamePipe} from '../../../../pipes/filter-course-by-name.pipe';
 
 
 @Component({
@@ -16,16 +14,15 @@ export class TodoListComponent implements OnInit, AfterContentChecked {
 
   @Input() public titleToFind: string;
 
-  public items: Course[];
+  @Input() public items: Course[];
 
 
-  constructor(private coursesService: CoursesService) {
+  constructor() {
     this.titleToFind = '';
   }
 
   ngOnInit() {
     this.titleToFind = '';
-    this.items = this.coursesService.getList();
   }
 
   ngAfterContentChecked() {
@@ -33,7 +30,6 @@ export class TodoListComponent implements OnInit, AfterContentChecked {
   }
 
   onRootDelete(id: number) {
-    this.items = this.coursesService.removeCourse(id);
     this.onDeleteInList.emit(id);
   }
 

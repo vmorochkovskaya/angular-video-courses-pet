@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Course} from '../core/course';
+import {Observable, of} from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -45,24 +48,27 @@ export class CoursesService {
   constructor() {
   }
 
-  getList(): Course[] {
-    return this.courses;
+  getList() {
+    // tslint:disable-next-line:no-unused-expression
+   return this.courses;
   }
 
   createCourse(course: Course) {
     this.courses.concat(course);
   }
 
-  getCourseById(id: number): Course {
-    return this.courses.find(item => item.id === id);
-  }
+  getCourseById(id: string): Observable<Course> {
+    return of(this.getList()).pipe(
+      // (+) before `id` turns the string into a number
+      map((courses: Course[]) => courses.find(course => course.id === +id))
+    );  }
 
   updateCourse(course: Course) {
     const itemIndex = this.courses.findIndex(item => item.id === course.id);
     this.courses[itemIndex] = course;
   }
 
-  removeCourse(id: number): Course[] {
-    return this.courses = this.courses.filter((item: Course) => item.id !== id);
+  removeCourse(id: number) {
+    return this.courses.filter((item: Course) => item.id !== id);
   }
 }

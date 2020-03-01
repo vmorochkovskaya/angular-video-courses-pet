@@ -9,6 +9,6 @@ import {AuthorizationService} from './services/authorization.service';
 export class AppComponent {
   title = 'startProject';
 
-  constructor(private authorizationService: AuthorizationService) {
+  constructor(public authorizationService: AuthorizationService) {
   }
 }
