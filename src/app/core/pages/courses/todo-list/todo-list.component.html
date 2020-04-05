@@ -1,5 +1,5 @@
-<p *ngIf="items.length == 0">No Data Feel Free To add New Course</p>
+<p *ngIf="items?.length == 0">No Data Feel Free To add New Course</p>
 <app-todo-list-item (onDelete)="onRootDelete($event)"
                     *ngFor="let item of items | orderBy: 'creationDate'"
                     [course]="item"></app-todo-list-item>
-<a *ngIf="items.length > 0" class="button" id="load_more" (click)="onClick()">Load more </a>
+<a *ngIf="items.length > 0" class="button" id="load_more" (click)="onClickLoadMore()">Load more </a>

@@ -2,14 +2,14 @@
   <div class="container">
     <div class="field has-addons">
       <div class="control">
-        <input class="input" type="text" placeholder="Search" [(ngModel)]="searchText">
+        <input class="input" type="text" placeholder="Search" [(ngModel)]="searchText" (keyup)="change()">
       </div>
       <div class="control">
-        <a class="button is-info" name="Search" (click)='onClick()'>
-          Search
-        </a>
-      </div>
-      <a routerLink="/course/new" class="button">+ Add course</a>
-    </div>
+<!--        <a class="button is-info" name="Search" (click)='onClick()'>-->
+<!--          Search-->
+<!--        </a>-->
+            <a routerLink="/course/new" class="button">+ Add course</a>
+          </div>
+        </div>
   </div>
-</section>
+      </section>

@@ -1,23 +1,23 @@
 import {
+  AfterContentChecked,
   Component, Input,
   OnInit
 } from '@angular/core';
 import {CoursesService} from '../../../../services/courses.service';
-import {Observable} from 'rxjs';
-import {Course} from '../../../course';
+import {Course} from '../../../entities/course';
 
 @Component({
   selector: 'app-cources-page',
   templateUrl: './cources-page.component.html',
   styleUrls: ['./cources-page.component.scss']
 })
-export class CourcesPageComponent implements OnInit {
+export class CourcesPageComponent implements OnInit, AfterContentChecked {
 
   @Input()
   public searchCourseTitle: string;
 
-  // public isAddCourse = false;
-  courses: Course[];
+  public courses: Course[];
+  limit = 5;
 
   constructor(private coursesService: CoursesService) {
     console.log(`courses page constructor`);
@@ -25,22 +25,48 @@ export class CourcesPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(`courses page ngOnInit`);
-    // this.searchCourseTitle = '';
-    this.courses = this.coursesService.getList();
+    this.getCourses();
+  }
+
+  private getCourses() {
+    this.coursesService.getList(0, this.limit).subscribe((courses: Course[]) => {
+      console.log(courses);
+      this.courses = courses;
+    });
   }
 
   update(id: number) {
-    console.log(id);
-    this.courses = this.coursesService.removeCourse(id);
+    this.coursesService.removeCourse(id.toString()).subscribe();
+    this.getCourses();
   }
 
   refreshSeearch(text: string) {
     this.searchCourseTitle = text;
+    this.limit = 5;
+    console.log(text);
+    this.searchCourse(this.searchCourseTitle, this.limit);
   }
 
-  // isAddNewCourse(isAdd: boolean) {
-  //   this.isAddCourse = isAdd;
-  // }
+  private searchCourse(text: string, limit: number) {
+    this.coursesService.getListWithSearch(text, 0, limit).subscribe((courses: Course[]) => {
+      this.courses = courses;
+    });
+  }
 
+  loadMore(limit: number) {
+    console.log('load more in action');
+    this.limit += limit;
+    if (this.searchCourseTitle !== '') {
+      this.searchCourse(this.searchCourseTitle, this.limit);
+    } else {
+      this.coursesService.getList(0, this.limit).subscribe((courses: Course[]) => {
+        this.courses = courses;
+      });
+    }
+  }
+
+  ngAfterContentChecked() {
+    // this.coursesService.getList(0, this.limi)
+    // this.items = new FilterCourseByNamePipe().transform(this.items, this.titleToFind);
+  }
 }

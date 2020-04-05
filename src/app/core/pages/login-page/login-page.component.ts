@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthorizationService} from '../../../services/authorization.service';
-import {UserEntity} from '../../user-entity';
-import {User} from '../../classes/user';
+import {UserEntity} from '../../entities/user-entity';
+import {User} from '../../entities/classes/user';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -16,6 +17,8 @@ export class LoginPageComponent implements OnInit {
   @Input()
   public password: any;
 
+  private token: Observable<any>;
+
   constructor(private authenticationService: AuthorizationService, private router: Router) {
   }
 
@@ -26,7 +29,15 @@ export class LoginPageComponent implements OnInit {
     const user: UserEntity = new User();
     user.login = this.login;
     user.password = this.password;
-    this.authenticationService.login(user);
-    this.router.navigate(['/courses-page']);
+    this.token = this.authenticationService.login(user);
+    console.log(localStorage.getItem('token1') + '8888888');
+    this.token.subscribe(token => {
+      console.log(token + 'fffff');
+      // if (token != null) {
+      // }
+      this.router.navigate(['/courses-page']);
+    });
+
+    // this.router.navigate(['/courses-page']);
   }
 }

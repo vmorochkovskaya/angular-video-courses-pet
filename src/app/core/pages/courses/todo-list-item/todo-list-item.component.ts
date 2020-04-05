@@ -9,7 +9,7 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import {Course} from '../../../course';
+import {Course} from '../../../entities/course';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteModalComponent} from '../../../delete-modal/delete-modal.component';
 import {Router} from '@angular/router';
@@ -22,12 +22,7 @@ import {CoursesService} from '../../../../services/courses.service';
   styleUrls: ['./todo-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoListItemComponent implements OnInit, DoCheck,
-  OnChanges,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewChecked,
-  AfterViewInit {
+export class TodoListItemComponent implements OnInit {
   @Input()
   public course: Course;
   closeResult: string;
@@ -43,33 +38,34 @@ export class TodoListItemComponent implements OnInit, DoCheck,
     console.log(`item ngOnInit`);
   }
 
-  ngOnChanges() {
-    console.log(`item OnChanges`);
-  }
-
-  ngDoCheck() {
-    console.log(`item ngDoCheck`);
-  }
-
-  ngAfterViewInit() {
-    console.log(`item ngAfterViewInit`);
-  }
-
-  ngAfterViewChecked() {
-    console.log(`item ngAfterViewChecked`);
-  }
-
-  ngAfterContentInit() {
-    console.log(`item ngAfterContentInit`);
-  }
-
-  ngAfterContentChecked() {
-    console.log(`item ngAfterContentChecked`);
-  }
+  // ngOnChanges() {
+  //   console.log(`item OnChanges`);
+  // }
+  //
+  // ngDoCheck() {
+  //   console.log(`item ngDoCheck`);
+  // }
+  //
+  // ngAfterViewInit() {
+  //   console.log(`item ngAfterViewInit`);
+  // }
+  //
+  // ngAfterViewChecked() {
+  //   console.log(`item ngAfterViewChecked`);
+  // }
+  //
+  // ngAfterContentInit() {
+  //   console.log(`item ngAfterContentInit`);
+  // }
+  //
+  // ngAfterContentChecked() {
+  //   console.log(`item ngAfterContentChecked`);
+  // }
 
   delete() {
     this.modalService.open(DeleteModalComponent).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
+      console.log('rrrrrrrrrrr333333333');
       this.onDelete.emit(this.course.id);
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

@@ -3,8 +3,8 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {first, switchMap} from 'rxjs/operators';
 import {CoursesService} from '../../../../services/courses.service';
 import {Observable} from 'rxjs';
-import {Course} from '../../../course';
-import {VideoCourse} from '../../../classes/video-course';
+import {Course} from '../../../entities/course';
+import {VideoCourse} from '../../../entities/classes/video-course';
 
 @Component({
   selector: 'app-course-details',
@@ -45,10 +45,10 @@ export class CourseDetailsComponent implements OnInit {
     let courseTmp: Course;
     courseTmp = new VideoCourse();
     this.course$.subscribe(course => courseTmp.id = course.id);
-    courseTmp.title = this.title;
+    courseTmp.name = this.title;
     courseTmp.description = this.description;
-    courseTmp.duration = this.duration;
-    courseTmp.creationDate = this.date;
+    courseTmp.length = this.duration;
+    courseTmp.date = this.date;
     this.service.updateCourse(courseTmp);
     this.router.navigate(['/courses-page']);
   }

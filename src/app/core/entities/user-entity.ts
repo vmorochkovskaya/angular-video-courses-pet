@@ -1,7 +1,8 @@
+import {NameEntity} from './name-entity';
+
 export interface UserEntity {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: NameEntity;
   login: string;
   password: string;
   token: string;

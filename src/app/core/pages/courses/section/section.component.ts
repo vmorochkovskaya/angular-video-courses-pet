@@ -1,19 +1,34 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges, OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
+import {of, Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss']
 })
-export class SectionComponent implements OnInit {
+export class SectionComponent implements OnInit, OnChanges, OnDestroy {
+
   @Input()
-  public searchText: any;
+  public searchText: string;
+
+  private searchSubscription: Subscription;
 
   // tslint:disable-next-line:no-output-on-prefix
-  @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onSearch: EventEmitter<any> = new EventEmitter<any>();
 
-  // tslint:disable-next-line:no-output-on-prefix
-  // @Output() onAdd: EventEmitter<any> = new EventEmitter<any>();
+  const
+  obs = {
+    next: (x: string) => (this.onSearch.emit(this.searchText))
+  };
 
 
   constructor() {
@@ -24,10 +39,18 @@ export class SectionComponent implements OnInit {
 
   onClick() {
     console.log(this.searchText);
-    this.onSearch.emit(this.searchText);
   }
 
-  // onAddCourse() {
-  // this.onAdd.emit(true);
-  // }
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
+  change() {
+    this.searchSubscription = of(this.searchText).pipe(filter((query) => query.length > 3),
+      debounceTime(600000),
+      distinctUntilChanged()).subscribe(this.obs);
+  }
+
+  ngOnDestroy(): void {
+    // this.searchSubscription.unsubscribe();
+  }
 }

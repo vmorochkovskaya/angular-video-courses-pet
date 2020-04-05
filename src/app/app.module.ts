@@ -5,8 +5,10 @@ import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 import {LoginPageModule} from './core/pages/login-page/login-page.module';
-import {CourcesPageComponent} from './core/pages/courses/cources-page/cources-page.component';
-import {CoursesModule} from "./core/pages/courses/courses.module";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {TokenInterceptor} from './core/interceptors/token-interceptor';
+import {LoaderService} from './services/loader.service';
+import {LoaderInterceptor} from './core/interceptors/loader-interceptor';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,23 @@ import {CoursesModule} from "./core/pages/courses/courses.module";
     BrowserModule,
     LoginPageModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
-  exports: []
-,
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  },
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }],
+  exports: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

@@ -1,9 +1,9 @@
 import {UserEntity} from '../user-entity';
+import {NameEntity} from '../name-entity';
 
 export class User implements UserEntity {
-  firstName: string;
   id: number;
-  lastName: string;
+  name: NameEntity;
   login: string;
   password: string;
   token: string;

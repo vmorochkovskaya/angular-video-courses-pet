@@ -11,10 +11,10 @@
   <textarea class="textarea" type="text" [(ngModel)]="description"></textarea>
   </div>
 </div>
-<app-date-input></app-date-input>
-<app-duration-input></app-duration-input>
+<app-date-input (onInputDate)="saveDate($event)"></app-date-input>
+<app-duration-input (onInputDuration)="saveDuration($event)"></app-duration-input>
 <app-authors-input></app-authors-input>
 <div class="buttons">
-  <button class="button is-primary is-light">Save</button>
+  <button class="button is-primary is-light" (click)="addCourse()">Save</button>
   <button class="button is-link is-light">Cancel</button>
 </div>

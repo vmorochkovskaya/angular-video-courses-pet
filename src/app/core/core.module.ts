@@ -12,7 +12,8 @@ import {LoginPageModule} from './pages/login-page/login-page.module';
 import {CoursesModule} from './pages/courses/courses.module';
 import {RouterModule} from '@angular/router';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import {CourcesPageComponent} from "./pages/courses/cources-page/cources-page.component";
+import {CourcesPageComponent} from './pages/courses/cources-page/cources-page.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -23,13 +24,15 @@ import {CourcesPageComponent} from "./pages/courses/cources-page/cources-page.co
     BreadcrumbsComponent,
     FilterCourseByNamePipe,
     DeleteModalComponent,
-    PageNotFoundComponent],
+    PageNotFoundComponent,
+    LoadingComponent],
   exports: [
     FooterComponent,
     HeaderComponent,
     BreadcrumbsComponent,
     DeleteModalComponent,
-    CourcesPageComponent
+    CourcesPageComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,

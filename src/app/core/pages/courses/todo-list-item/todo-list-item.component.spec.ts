@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TodoListItemComponent} from './todo-list-item.component';
-import {Course} from '../../../course';
+import {Course} from '../../../entities/course';
 import {By} from '@angular/platform-browser';
 import {HourDurationPipe} from '../../../../pipes/hour-duration.pipe';
 import {BorderOnCreationDateDirective} from '../../../../directives/border-on-creation-date.directive';
@@ -49,7 +49,7 @@ describe('TodoListItemComponent', () => {
     };
     component.course = course;
     const spy = spyOn(component, 'delete');
-    fixture.debugElement.query(By.css('a[name=Delete]')).triggerEventHandler('click', null);
+    fixture.debugElement.query(By.css('a[name-entity.ts=Delete]')).triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
   });

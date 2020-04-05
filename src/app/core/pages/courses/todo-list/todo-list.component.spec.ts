@@ -3,7 +3,7 @@ import {TodoListComponent} from './todo-list.component';
 import {FormsModule} from '@angular/forms';
 import {TodoListItemComponent} from '../todo-list-item/todo-list-item.component';
 import {By} from '@angular/platform-browser';
-import {Course} from '../../../course';
+import {Course} from '../../../entities/course';
 import {OrderByPipe} from '../../../../pipes/order-by.pipe';
 import {HourDurationPipe} from '../../../../pipes/hour-duration.pipe';
 import {BorderOnCreationDateDirective} from "../../../../directives/border-on-creation-date.directive";

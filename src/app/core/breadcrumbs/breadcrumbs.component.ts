@@ -8,6 +8,7 @@ import {ActivatedRoute, NavigationEnd, PRIMARY_OUTLET, Router} from '@angular/ro
 import {Title} from '@angular/platform-browser';
 import {CoursesService} from '../../services/courses.service';
 import {filter, map} from 'rxjs/operators';
+import {Course} from '../entities/course';
 
 
 @Component({
@@ -40,7 +41,9 @@ export class BreadcrumbsComponent implements AfterContentChecked {
           const matchId = snapshot.url.match('(?<=course\\/)\\d');
           if (matchId != null) {
             const id = matchId[0];
-            this.titleService.setTitle(this.coursesService.getList().find(course => course.id === +id).title);
+            this.coursesService.getCourseById(id).subscribe((course: Course) => {
+              this.titleService.setTitle(course.name);
+            });
           }
         }
       });

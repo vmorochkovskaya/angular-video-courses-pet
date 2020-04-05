@@ -2,10 +2,12 @@
   <div class="container">
     <div id='nav-menu' class="nav-right nav-menu">
       <app-logo></app-logo>
-      <div *ngIf="authorizationService.isAuthenticated()" id="navbarExampleTransparentExample" class="navbar-menu">
-        <div class="navbar-start">
+      <div *ngIf="isAuthorised" id="navbarExampleTransparentExample" class="navbar-menu">
+<!--            <div *ngIf="!isAuthorised">-->
+
+      <div class="navbar-start">
           <p class="navbar-item">
-            {{authorizationService.getUserInfo()}}
+         {{login}}
           </p>
         </div>
         <div class="navbar-end">

@@ -38,7 +38,7 @@ describe('SectinComponent', () => {
 
   it('should listen for form changes', () => {
     const spy = spyOn(component, 'onClick');
-    fixture.debugElement.query(By.css('a[name="Search"]')).triggerEventHandler('click', null);
+    fixture.debugElement.query(By.css('a[name-entity.ts="Search"]')).triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
   });
