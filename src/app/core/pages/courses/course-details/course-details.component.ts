@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {first, switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {CoursesService} from '../../../../services/courses.service';
 import {Observable} from 'rxjs';
 import {Course} from '../../../entities/course';
@@ -13,6 +13,7 @@ import {VideoCourse} from '../../../entities/classes/video-course';
 })
 export class CourseDetailsComponent implements OnInit {
   course$: Observable<Course>;
+
   @Input()
   public title: any;
 
@@ -40,11 +41,11 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   save() {
-    // tslint:disable-next-line:prefer-const
-    console.log('Save');
     let courseTmp: Course;
     courseTmp = new VideoCourse();
-    this.course$.subscribe(course => courseTmp.id = course.id);
+    this.course$.subscribe(course => {
+      courseTmp.id = course.id;
+    });
     courseTmp.name = this.title;
     courseTmp.description = this.description;
     courseTmp.length = this.duration;

@@ -44,15 +44,13 @@ export class AuthorizationService {
         }
       ));
     }
-    console.log('false');
     return of(false);
   }
 
-  public getUserInfo() {
+  public getUserInfo(): Observable<string> {
     const tkn = this.getAuthorizationToken();
     if (tkn != null) {
       return this.http.post<UserEntity>('http://localhost:3004/auth/userinfo', {token: tkn}).pipe(map(entity => {
-          console.log(entity.login);
           return entity.login;
         }
       ));

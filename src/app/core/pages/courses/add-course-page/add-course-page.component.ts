@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VideoCourse} from '../../../entities/classes/video-course';
 import {CoursesService} from '../../../../services/courses.service';
-import {CourseAuthor} from "../../../entities/classes/course-author";
-import {Router} from "@angular/router";
+import {CourseAuthor} from '../../../entities/classes/course-author';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-course-page',
@@ -45,7 +45,6 @@ export class AddCoursePageComponent implements OnInit {
     a = String(a);
     a = a.substring(0, 4);
     course.id = +a;
-    console.log(a);
     const authors = [];
     const author = new CourseAuthor();
     author.id = +a.toString().substring(0, 4);

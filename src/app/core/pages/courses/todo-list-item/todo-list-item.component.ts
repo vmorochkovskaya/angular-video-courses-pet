@@ -1,11 +1,8 @@
 import {
-  AfterContentChecked,
-  AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy,
+  ChangeDetectionStrategy,
   Component,
-  DoCheck,
   EventEmitter,
   Input,
-  OnChanges,
   OnInit,
   Output
 } from '@angular/core';
@@ -37,30 +34,6 @@ export class TodoListItemComponent implements OnInit {
   ngOnInit() {
     console.log(`item ngOnInit`);
   }
-
-  // ngOnChanges() {
-  //   console.log(`item OnChanges`);
-  // }
-  //
-  // ngDoCheck() {
-  //   console.log(`item ngDoCheck`);
-  // }
-  //
-  // ngAfterViewInit() {
-  //   console.log(`item ngAfterViewInit`);
-  // }
-  //
-  // ngAfterViewChecked() {
-  //   console.log(`item ngAfterViewChecked`);
-  // }
-  //
-  // ngAfterContentInit() {
-  //   console.log(`item ngAfterContentInit`);
-  // }
-  //
-  // ngAfterContentChecked() {
-  //   console.log(`item ngAfterContentChecked`);
-  // }
 
   delete() {
     this.modalService.open(DeleteModalComponent).result.then((result) => {

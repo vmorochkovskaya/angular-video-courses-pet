@@ -1,27 +1,25 @@
-# StartProject
+<h1 align="center">Video courses</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+## Technologies
+Angular, typescript
 
-## Development server
+## Description
+- As a user you should be able to login via login form with flastname/flastname credentials.
+- As a logged in user you should be able to be redirected to courses-page.
+- As a logged in user you should be able to observe 5 courses after redirection on courses-page.
+- As a logged in user you should be able to see [Load more] button which loads 5 more courses after click.
+- Courses should be sorted by date ascending on courses-page.
+- User should be able to search for courses by title on description substring via Search field.
+- As a logged in user you should see your username and Log off link in header.
+- User should be logged off after clicking on Log off link in header.
+- As a user you should be able to add new course via Add course button new search field.
+- User should be redirected to courses-page without any new item added after clicking [Cancel] on Add course page.
+- As a user you should be able to delete course via [Delete] button new required course and clicking Yes on confirmation modal window.
+- Confirmation modal window for course deletion should be closed by clicking on [No] or cross buttons.
+- Course item border should be green if course start date less than current date not more than 14 days.
+- Course item border should be blue if course start date more than current date.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name-entity.ts` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## How to run
+1. Start backend from angular-project-stucture/angular-project-stucture/BE folder: `node index`.
+2. Execute `ng serve` from project root repository.
+4. Open localhost:4200

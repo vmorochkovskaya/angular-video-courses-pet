@@ -27,20 +27,16 @@ export class CoursesService {
     });
   }
 
-  createCourse(course: Course) {
-    // this.courses.concat(course);
-  }
-
   getCourseById(id: string): Observable<Course> {
     return this.http.get<Course>(this.urlTemplate, {
       observe: 'body',
       params: {id}
-    });
+    }).pipe();
   }
 
-  updateCourse(course: Course) {
-    // const itemIndex = this.courses.findIndex(item => item.id === course.id);
-    // this.courses[itemIndex] = course;
+  updateCourse(course: Course): Observable<any>  {
+    console.log(course.id);
+    return this.http.patch(this.urlTemplate + `/${course.id}`, course).pipe();
   }
 
   addCourse(course: Course): Observable<Course>  {
