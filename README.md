@@ -9,7 +9,7 @@ Angular, typescript
 - As a logged in user you should be able to observe 5 courses after redirection on courses-page.
 - As a logged in user you should be able to see [Load more] button which loads 5 more courses after click.
 - Courses should be sorted by date ascending on courses-page.
-- User should be able to search for courses by title on description substring via Search field.
+- User should be able to search for courses by title or description substring via Search field.
 - As a logged in user you should see your username and Log off link in header.
 - User should be logged off after clicking on Log off link in header.
 - As a user you should be able to add new course via Add course button new search field.
@@ -18,6 +18,7 @@ Angular, typescript
 - Confirmation modal window for course deletion should be closed by clicking on [No] or cross buttons.
 - Course item border should be green if course start date less than current date not more than 14 days.
 - Course item border should be blue if course start date more than current date.
+- User should see conversion to [h min] hint under Duration field on Add/Edit course page while typing duration in minutes.
 
 ## How to run
 1. Start backend from angular-project-stucture/angular-project-stucture/BE folder: `node index`.
